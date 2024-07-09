@@ -1,0 +1,44 @@
+{
+    "data_table": {
+        "url": "https://datatables.net/examples/basic_init/flexible_width.html",
+        "actions": [
+            {"type": "input", "selector": "input[type='search']", "value": "Tokyo"},
+            {"type": "submit", "selector": "input[type='search']"}
+        ],
+        "main_element_selector": "table.dataTable",
+        "header_selector": "thead th",
+        "row_selector": "tbody tr",
+        "cell_selector": "td",
+        "num_items": 5
+    },
+    "mercado_libre": {
+        "url": "https://www.mercadolibre.com.mx",
+        "actions": [
+            {"type": "input", "selector": "input.nav-search-input", "value": "laptops"},
+            {"type": "submit", "selector": "input.nav-search-input"}
+        ],
+        "main_element_selector": "div.ui-search",
+        "row_selector": "ol.ui-search-layout li.ui-search-layout__item",
+        "fields": {
+            "Nombre del Producto": "h2.ui-search-item__title",
+            "Precio": "span.andes-money-amount__fraction",
+            "Descuento": "span.ui-search-price__discount"
+        },
+        "num_items": 3
+    },
+    "cyberpuerta": {
+        "url": "https://www.cyberpuerta.mx",
+        "actions": [
+            {"type": "input", "selector": "input[name='searchparam']", "value": "laptops"},
+            {"type": "submit", "selector": "input[name='searchparam']"}
+        ],
+        "main_element_selector": "ul#lineView",
+        "row_selector": "li.cell.productData",
+        "fields": {
+            "Nombre del Producto": "a.emproduct_right_title",
+            "Precio": "label.price",
+            "Descuento": "span.percent"
+        },
+        "num_items": 3
+    }    
+}

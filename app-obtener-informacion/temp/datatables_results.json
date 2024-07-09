@@ -1,0 +1,42 @@
+[
+    {
+        "Name": "Airi Satou",
+        "Position": "Accountant",
+        "Office": "Tokyo",
+        "Age": "33",
+        "Start date": "2008-11-28",
+        "Salary": "$162,700"
+    },
+    {
+        "Name": "Garrett Winters",
+        "Position": "Accountant",
+        "Office": "Tokyo",
+        "Age": "63",
+        "Start date": "2011-07-25",
+        "Salary": "$170,750"
+    },
+    {
+        "Name": "Rhona Davidson",
+        "Position": "Integration Specialist",
+        "Office": "Tokyo",
+        "Age": "55",
+        "Start date": "2010-10-14",
+        "Salary": "$327,900"
+    },
+    {
+        "Name": "Sakura Yamamoto",
+        "Position": "Support Engineer",
+        "Office": "Tokyo",
+        "Age": "37",
+        "Start date": "2009-08-19",
+        "Salary": "$139,575"
+    },
+    {
+        "Name": "Shou Itou",
+        "Position": "Regional Marketing",
+        "Office": "Tokyo",
+        "Age": "20",
+        "Start date": "2011-08-14",
+        "Salary": "$163,000"
+    }
+]
