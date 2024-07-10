@@ -24,7 +24,7 @@ config_datatables = data.get('data_table')
 config_mercadolibre = data.get('mercado_libre')
 
 # Configuración para la URL de Cyber Puerta
-config_cyberpuerta = data.get('cyberpuerta')
+config_cyberpuerta = data.get('cyber_puerta')
 
 build_data = BuildData({}, file_path='./temp')
 
