@@ -18,8 +18,8 @@
     "uttorreon": {
         "url": "https://uttorreon.mx/",
         "actions": [
-            {"type": "input", "selector": "input[name='email']", "value": "angelvrg130@gmail.com"},
-            {"type": "input", "selector": "input[name='password']", "value": "VARA020803HCLRMNA2"},
+            {"type": "input", "selector": "input[name='email']", "value": ""},
+            {"type": "input", "selector": "input[name='password']", "value": ""},
             {"type": "submit", "selector": "button[type='submit']"},
             {"type": "click", "selector": "li[data-original-title='Mi Espacio']"},
             {"type": "click", "selector": "li[data-original-title='Académico']"},
