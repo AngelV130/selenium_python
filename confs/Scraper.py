@@ -5,19 +5,29 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
+import time
 
 class Scraper:
     def __init__(self, config):
         self.config = config
         self.options = Options()
         self.options.headless = False
+        self.options.add_argument("--start-maximized")
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=self.options)
 
     def navigate_to_page(self):
         try:
             self.driver.get(self.config['url'])
-            return self.perform_actions()
+            data = [self.perform_actions()]
+            if 'paginate' in self.config:
+                self.config['actions'] = [{'type': 'click', 'selector': self.config['paginate']['selector']}]
+                for i in range(self.config['paginate']['repeat']):
+                    data.append(self.perform_actions())
+                return data
+            else:
+                return data
         except Exception as e:
             print(f"Error al cargar la página: {e}")
 
@@ -25,7 +35,7 @@ class Scraper:
         try:
             if 'actions' in self.config:
                 for action in self.config['actions']:
-                    element = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, action['selector'])))
+                    element = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, action['selector'])))
                     if action['type'] == 'click':
                         element.click()
                     elif action['type'] == 'input':
@@ -37,12 +47,16 @@ class Scraper:
                                 break
                     elif action['type'] == 'submit':
                         element.send_keys(Keys.RETURN)
+                    elif action['type'] == 'hover':
+                        # Realizar hover sobre el elemento
+                        ActionChains(self.driver).move_to_element(element).perform()
             return self.scrape_data()
         except Exception as e:
             print(f"Error al realizar las acciones: {e}")
 
     def scrape_data(self):
         try:
+            time.sleep(3)
             table_data = []
             if 'fields' in self.config:
                 self.scrape_custom_data(table_data)
@@ -58,7 +72,7 @@ class Scraper:
             headers = [header.text for header in table_element.find_elements(By.CSS_SELECTOR, self.config['header_selector'])]
             rows = table_element.find_elements(By.CSS_SELECTOR, self.config['row_selector'])
 
-            for i in range(min(self.config['num_items'], len(rows))):  # Limitar el número de filas
+            for i in range(min(self.config['num_items'], len(rows))):
                 row = rows[i]
                 cells = row.find_elements(By.CSS_SELECTOR, self.config['cell_selector'])
                 row_data = [cell.text for cell in cells]
@@ -85,7 +99,6 @@ class Scraper:
         data_dict = data
         try:
             if not isinstance(data[0], dict):
-                # Convert data to Dictionary
                 data_dict = {data[0][i]: [data[j][i] for j in range(1, len(data))] for i in range(len(data[0]))}
             return data_dict
         except Exception as e:

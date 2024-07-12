@@ -1,7 +1,7 @@
 from datetime import datetime
 import pandas as pd
 import os
-from confs.Json import Json
+from confs.Json import Json  # Asumiendo que Json es una clase personalizada para manejar archivos JSON
 
 class BuildData(Json):
     def __init__(self, data_dict = {}, file_path = './', file_name = 'data'):

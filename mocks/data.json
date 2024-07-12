@@ -2,14 +2,34 @@
     "data_table": {
         "url": "https://datatables.net/examples/basic_init/flexible_width.html",
         "actions": [
-            {"type": "input", "selector": "input[type='search']", "value": "Tokyo"},
+            {"type": "input", "selector": "input[type='search']", "value": ""},
             {"type": "submit", "selector": "input[type='search']"}
         ],
         "main_element_selector": "table.dataTable",
         "header_selector": "thead th",
         "row_selector": "tbody tr",
         "cell_selector": "td",
-        "num_items": 5
+        "num_items": 5,
+        "paginate":{
+            "selector": "button.dt-paging-button.next",
+            "repeat": 2
+        }
+    },
+    "uttorreon": {
+        "url": "https://uttorreon.mx/",
+        "actions": [
+            {"type": "input", "selector": "input[name='email']", "value": "angelvrg130@gmail.com"},
+            {"type": "input", "selector": "input[name='password']", "value": "VARA020803HCLRMNA2"},
+            {"type": "submit", "selector": "button[type='submit']"},
+            {"type": "click", "selector": "li[data-original-title='Mi Espacio']"},
+            {"type": "click", "selector": "li[data-original-title='Académico']"},
+            {"type": "click", "selector": "a[href='https://uttorreon.mx/21170057/AreaAlumno/EstadoAcademico']"}
+        ],
+        "main_element_selector": "table#Tabla",
+        "header_selector": "thead th",
+        "row_selector": "tbody tr",
+        "cell_selector": "td",
+        "num_items": 15
     },
     "mercado_libre": {
         "url": "https://www.mercadolibre.com.mx",
@@ -39,6 +59,10 @@
             "Precio": "label.price",
             "Descuento": "span.percent"
         },
-        "num_items": 3
-    }    
+        "num_items": 3,
+        "paginate":{
+            "selector": "a.next",
+            "repeat": 2
+        }
+    }
 }
