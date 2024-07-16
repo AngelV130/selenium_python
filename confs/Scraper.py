@@ -66,21 +66,26 @@ class Scraper:
         except Exception as e:
             print(f"Error al extraer la información: {e}")
 
-    def scrape_generic_data(self, table_data):
+    def scrape_generic_data(self, data_list):
         try:
-            table_element = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, self.config['main_element_selector'])))
-            headers = [header.text for header in table_element.find_elements(By.CSS_SELECTOR, self.config['header_selector'])]
-            rows = table_element.find_elements(By.CSS_SELECTOR, self.config['row_selector'])
+            main_element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.config['main_element_selector']))
+            )
 
-            for i in range(min(self.config['num_items'], len(rows))):
+            headers = []
+            if 'header_selector' in self.config:
+                headers = [header.text for header in main_element.find_elements(By.CSS_SELECTOR, self.config['header_selector'])]
+                data_list.append(headers)
+
+            rows = main_element.find_elements(By.CSS_SELECTOR, self.config['row_selector'])
+
+            for i in range(min(self.config.get('num_items', len(rows)), len(rows))):
                 row = rows[i]
                 cells = row.find_elements(By.CSS_SELECTOR, self.config['cell_selector'])
                 row_data = [cell.text for cell in cells]
-                table_data.append(row_data)
-
-            table_data.insert(0, headers)
+                data_list.append(row_data)
         except Exception as e:
-            print(f"Error al extraer información genérica: {e}")
+            print(f"Error al extraer los datos: {e}")
 
     def scrape_custom_data(self, table_data):
         try:

@@ -23,7 +23,7 @@
             {"type": "submit", "selector": "button[type='submit']"},
             {"type": "click", "selector": "li[data-original-title='Mi Espacio']"},
             {"type": "click", "selector": "li[data-original-title='Académico']"},
-            {"type": "click", "selector": "a[href='https://uttorreon.mx/21170057/AreaAlumno/EstadoAcademico']"}
+            {"type": "click", "selector": "a[href='https://uttorreon.mx//AreaAlumno/EstadoAcademico']"}
         ],
         "main_element_selector": "table#Tabla",
         "header_selector": "thead th",
@@ -64,5 +64,23 @@
             "selector": "a.next",
             "repeat": 2
         }
+    },
+    "data_table_generic": {
+        "url": "https://datatables.net/examples/basic_init/flexible_width.html",
+        "actions": [
+            {"type": "input", "selector": "input[type='search']", "value": ""},
+            {"type": "submit", "selector": "input[type='search']"}
+        ],
+        "main_element_selector": "table.dataTable",
+        "row_selector": "tbody tr",
+        "fields":{
+            "Name": "th[data-dt-column='0']",
+            "Position": "th[data-dt-column='1']",
+            "Office": "th[data-dt-column='2']",
+            "Age": "th[data-dt-column='3']",
+            "Start date": "th[data-dt-column='4']",
+            "Salary": "th[data-dt-column='5']"
+        },
+        "num_items": 5
     }
 }
