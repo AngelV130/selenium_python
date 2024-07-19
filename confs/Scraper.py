@@ -71,7 +71,6 @@ class Scraper:
             main_element = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, self.config['main_element_selector']))
             )
-
             headers = []
             if 'header_selector' in self.config:
                 headers = [header.text for header in main_element.find_elements(By.CSS_SELECTOR, self.config['header_selector'])]
@@ -89,8 +88,14 @@ class Scraper:
 
     def scrape_custom_data(self, table_data):
         try:
-            rows = self.driver.find_elements(By.CSS_SELECTOR, self.config['row_selector'])
-            for i in range(min(self.config['num_items'], len(rows))):
+            main_element = self.driver
+            if 'main_element_selector' in self.config:
+                main_element = WebDriverWait(self.driver, 20).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, self.config['main_element_selector']))
+                )
+            rows = main_element.find_elements(By.CSS_SELECTOR, self.config['row_selector'])
+            
+            for i in range(min(self.config.get('num_items', len(rows)), len(rows))):
                 row = rows[i]
                 row_data = {}
                 for field, selector in self.config['fields'].items():

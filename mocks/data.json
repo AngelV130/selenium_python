@@ -6,12 +6,34 @@
             {"type": "submit", "selector": "input[type='search']"}
         ],
         "main_element_selector": "table.dataTable",
-        "header_selector": "thead th",
         "row_selector": "tbody tr",
-        "cell_selector": "td",
+        "fields":{
+            "Name": "td:nth-child(1)",
+            "Position": "td:nth-child(2)",
+            "Office": "td:nth-child(3)",
+            "Age": "td:nth-child(4)"
+        },
         "num_items": 5,
         "paginate":{
             "selector": "button.dt-paging-button.next",
+            "repeat": 2
+        }
+    },
+    "cyber_puerta": {
+        "url": "https://www.cyberpuerta.mx",
+        "actions": [
+            {"type": "input", "selector": "input[name='searchparam']", "value": "laptops"},
+            {"type": "submit", "selector": "input[name='searchparam']"}
+        ],
+        "row_selector": "li.cell.productData",
+        "fields": {
+            "Nombre del Producto": "a.emproduct_right_title",
+            "Precio": "label.price",
+            "Descuento": "span.percent"
+        },
+        "num_items": 3,
+        "paginate":{
+            "selector": "a.next",
             "repeat": 2
         }
     },
@@ -23,12 +45,15 @@
             {"type": "submit", "selector": "button[type='submit']"},
             {"type": "click", "selector": "li[data-original-title='Mi Espacio']"},
             {"type": "click", "selector": "li[data-original-title='Académico']"},
-            {"type": "click", "selector": "a[href='https://uttorreon.mx//AreaAlumno/EstadoAcademico']"}
+            {"type": "click", "selector": "a[href='']"}
         ],
         "main_element_selector": "table#Tabla",
-        "header_selector": "thead th",
         "row_selector": "tbody tr",
-        "cell_selector": "td",
+        "fields": {
+            "Profesor": "td:nth-child(2)",
+            "Materia": "td:nth-child(3)",
+            "Calificación": "td:nth-child(4)"
+        },
         "num_items": 15
     },
     "mercado_libre": {
@@ -45,42 +70,5 @@
             "Descuento": "span.ui-search-price__discount"
         },
         "num_items": 3
-    },
-    "cyber_puerta": {
-        "url": "https://www.cyberpuerta.mx",
-        "actions": [
-            {"type": "input", "selector": "input[name='searchparam']", "value": "laptops"},
-            {"type": "submit", "selector": "input[name='searchparam']"}
-        ],
-        "main_element_selector": "ul#lineView",
-        "row_selector": "li.cell.productData",
-        "fields": {
-            "Nombre del Producto": "a.emproduct_right_title",
-            "Precio": "label.price",
-            "Descuento": "span.percent"
-        },
-        "num_items": 3,
-        "paginate":{
-            "selector": "a.next",
-            "repeat": 2
-        }
-    },
-    "data_table_generic": {
-        "url": "https://datatables.net/examples/basic_init/flexible_width.html",
-        "actions": [
-            {"type": "input", "selector": "input[type='search']", "value": ""},
-            {"type": "submit", "selector": "input[type='search']"}
-        ],
-        "main_element_selector": "table.dataTable",
-        "row_selector": "tbody tr",
-        "fields":{
-            "Name": "th[data-dt-column='0']",
-            "Position": "th[data-dt-column='1']",
-            "Office": "th[data-dt-column='2']",
-            "Age": "th[data-dt-column='3']",
-            "Start date": "th[data-dt-column='4']",
-            "Salary": "th[data-dt-column='5']"
-        },
-        "num_items": 5
     }
 }
