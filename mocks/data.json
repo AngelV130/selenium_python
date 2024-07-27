@@ -5,18 +5,20 @@
             {"type": "input", "selector": "input[type='search']", "value": ""},
             {"type": "submit", "selector": "input[type='search']"}
         ],
-        "main_element_selector": "table.dataTable",
-        "row_selector": "tbody tr",
-        "fields":{
-            "Name": "td:nth-child(1)",
-            "Position": "td:nth-child(2)",
-            "Office": "td:nth-child(3)",
-            "Age": "td:nth-child(4)"
+        "scrape": {
+            "main_element_selector": "table.dataTable",
+            "row_selector": "tbody tr",
+            "fields":{
+                "Name": "td:nth-child(1)",
+                "Position": "td:nth-child(2)",
+                "Office": "td:nth-child(3)",
+                "Age": "td:nth-child(4)"
+            },
+            "num_items": 2
         },
-        "num_items": 5,
         "paginate":{
             "selector": "button.dt-paging-button.next",
-            "repeat": 2
+            "repeat": 4
         }
     },
     "cyber_puerta": {
@@ -25,36 +27,19 @@
             {"type": "input", "selector": "input[name='searchparam']", "value": "laptops"},
             {"type": "submit", "selector": "input[name='searchparam']"}
         ],
-        "row_selector": "li.cell.productData",
-        "fields": {
-            "Nombre del Producto": "a.emproduct_right_title",
-            "Precio": "label.price",
-            "Descuento": "span.percent"
+        "scrape": {
+            "row_selector": "li.cell.productData",
+            "fields": {
+                "Nombre del Producto": "a.emproduct_right_title",
+                "Precio": "label.price",
+                "Descuento": "span.percent"
+            },
+            "num_items": 3
         },
-        "num_items": 3,
         "paginate":{
             "selector": "a.next",
             "repeat": 2
         }
-    },
-    "uttorreon": {
-        "url": "https://uttorreon.mx/",
-        "actions": [
-            {"type": "input", "selector": "input[name='email']", "value": ""},
-            {"type": "input", "selector": "input[name='password']", "value": ""},
-            {"type": "submit", "selector": "button[type='submit']"},
-            {"type": "click", "selector": "li[data-original-title='Mi Espacio']"},
-            {"type": "click", "selector": "li[data-original-title='Académico']"},
-            {"type": "click", "selector": "a[href='']"}
-        ],
-        "main_element_selector": "table#Tabla",
-        "row_selector": "tbody tr",
-        "fields": {
-            "Profesor": "td:nth-child(2)",
-            "Materia": "td:nth-child(3)",
-            "Calificación": "td:nth-child(4)"
-        },
-        "num_items": 15
     },
     "mercado_libre": {
         "url": "https://www.mercadolibre.com.mx",
@@ -62,13 +47,15 @@
             {"type": "input", "selector": "input.nav-search-input", "value": "laptops"},
             {"type": "submit", "selector": "input.nav-search-input"}
         ],
-        "main_element_selector": "div.ui-search",
-        "row_selector": "ol.ui-search-layout li.ui-search-layout__item",
-        "fields": {
-            "Nombre del Producto": "h2.ui-search-item__title",
-            "Precio": "span.andes-money-amount__fraction",
-            "Descuento": "span.ui-search-price__discount"
-        },
-        "num_items": 3
+        "scrape": {
+            "main_element_selector": "div.ui-search",
+            "row_selector": "ol.ui-search-layout li.ui-search-layout__item",
+            "fields": {
+                "Nombre del Producto": "h2.ui-search-item__title",
+                "Precio": "span.andes-money-amount__fraction",
+                "Descuento": "span.ui-search-price__discount"
+            },
+            "num_items": 3
+        }
     }
 }
